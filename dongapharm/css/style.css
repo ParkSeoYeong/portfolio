@@ -197,19 +197,22 @@ box-sizing: border-box;
 }
 
 #visual .main-banner{
-    display: flex;
-    position: absolute;
-    left: 0;top: 0;
-
+    position: relative;
 
   
 }
 #visual .main-banner li{
-    width: 1920px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 100%;
 
 }
+#visual .main-banner li:first-child{
+    left: 0;
+}
 #visual .main-banner> li >img{
-    width: 1920px;
+    width: 100%;
     box-sizing: border-box;
     overflow: hidden;
 
@@ -218,8 +221,8 @@ box-sizing: border-box;
 }
 #visual  .main-text{
     position: absolute;
-    left:570px; top: 260px;
-
+    left:50%; top: 260px;
+    transform: translateX(-50%);
     display: inline-block;
     width: 785px;
     text-align: center;
@@ -248,7 +251,8 @@ box-sizing: border-box;
 #visual .paging{
     display: flex;
     position: absolute;
-    top: 790px;left: 920px;
+    top: 790px;left: 50%;
+    transform: translateX(-50%);
 }
 #visual .paging li{
     width: 14px;
