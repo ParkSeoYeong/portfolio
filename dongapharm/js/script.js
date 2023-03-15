@@ -53,55 +53,39 @@ function gnb_menu() {
 
 //비주얼
 function visual() {
-
-  let $bannerul = $('#visual .main-banner');
   let $bannerli = $('#visual .main-banner> li');
-  let $bannerimg = $('#visual .main-banner> li >img');
   let $pagingli = $('#visual .paging li');
-  let current = 0, old = 0, first, last, a = 0,imgurl='';
+  let current = 0, old = 0;
   let size = $bannerli.length;
-  let w = $bannerli.width();
-
-  let arrA=[];
-  for(let i=0;i<size;i++){
-    arrA[i]=$bannerli.width();
-  }
-
-
-  let cnt = 0, timer = null, interval = '3000';
+  let timer = null, interval = 3000;
 
   timer = setInterval(make, interval);
-
   function make() {
-    cnt++;
-    if (cnt > size - 1) {
-      cnt = 0;
+    current++;
+    if (current > size - 1) {
+      current = 0;
     }
-
-    $bannerul.stop().animate({ left:-( w * cnt)});
-  
-    $pagingli.removeClass('on');
-    $pagingli.eq(cnt).addClass('on');
-
-  
-    
+    banner('100%', '-100%');
   }
 
-
-
   $pagingli.on('click', function () {
-    cnt = $(this).index();
-    $bannerul.stop().animate({ left:-( w * cnt)});
-    $pagingli.removeClass('on');
-    $pagingli.eq(cnt).addClass('on');
-
+    current = $(this).index();
+    if (current != old) {
+      banner('100%', '-100%');
+    }
     clearInterval(timer);
     timer = setInterval(make, interval);
   })
 
+  function banner(start, end) {
+    $bannerli.eq(current).css({ left: start }).animate({ left: 0 });
+    $bannerli.eq(old).css({ left: 0 }).animate({ left: end });
 
-
+    $pagingli.removeClass('on');
+    $pagingli.eq(current).addClass('on');
     
+    old = current;
+  }
 
 }
 
