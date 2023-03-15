@@ -415,7 +415,7 @@ font-weight: 700;
 #container .brand li img:hover{
     box-shadow: 0px 0px 15px 15px #dcdcdc;
 }
-
+#container .brand li:hover p a {color:#00a0ca}
 
 
 #container .brand li p{
